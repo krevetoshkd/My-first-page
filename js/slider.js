@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Массив с путями к изображениям
     const slides = [
         'img/001.jpg',
         'img/002.jpg',
@@ -6,32 +7,34 @@ document.addEventListener('DOMContentLoaded', () => {
         'img/004.jpg',
         'img/005.jpg',
     ];
+
     
-    let currentSlide = 0;
-    const sliderImage = document.querySelector('.slider-image');
-    const leftArrow = document.querySelector('.slider-arrow.left');
-    const rightArrow = document.querySelector('.slider-arrow.right');
-
-    // Функция для обновления изображения
-    const updateSlide = () => {
-        sliderImage.style.backgroundImage = `url(${slides[currentSlide]})`;
-    };
-
-    // Событие на левую стрелку
-    leftArrow.addEventListener('click', () => {
-        currentSlide = (currentSlide === 0) ? slides.length - 1 : currentSlide - 1;
-        updateSlide();
+    
+    $(document).ready(() => {
+        let currentSlide = 0; // Текущий слайд
+        let isBusy = false; // Флаг занятости (анимации)
+        const slidesCount = slides.length - 1; // Количество слайдов (индекс последнего)
+    
+        $('.slider-arrow').on('click', (e) => {
+            const that = $(e.currentTarget);
+    
+            if (!isBusy) {
+                if (that.hasClass('right')) {
+                    currentSlide += 1;
+                    if (currentSlide > slidesCount) currentSlide = 0;
+                } else {
+                    currentSlide -= 1;
+                    if (currentSlide < 0) currentSlide = slidesCount;
+                }
+    
+                isBusy = true;
+                $('.slider-image').animate({'opacity': 0}, 350, () => {
+                    $('.slider-image').css('background-image', 'url(' + slides[currentSlide] + ')');
+                });
+                $('.slider-image').animate({'opacity': 1}, 350, () => isBusy = false);
+            }
+        });
     });
-
-    // Событие на правую стрелку
-    rightArrow.addEventListener('click', () => {
-        currentSlide = (currentSlide === slides.length - 1) ? 0 : currentSlide + 1;
-        updateSlide();
-    });
-
-    // Инициализация первого слайда
-    updateSlide();
-});
 document.addEventListener('DOMContentLoaded', function () {
     // Находим элемент слайдера
     let carouselElement = document.querySelector('#carouselExampleIndicators');
@@ -63,4 +66,4 @@ document.addEventListener('DOMContentLoaded', function () {
         console.error('Элемент слайдера не найден.');
     }
 });
-
+});
