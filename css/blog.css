@@ -1,0 +1,251 @@
+/* Основная структура статьи */
+.blog-article {
+    display: flex;
+    max-width: 960px;
+    margin: 70px auto 30px;
+}
+
+.blog-container {
+    flex: 2;
+    padding: 30px 15px;
+}
+
+.blog-aside {
+    flex: 1;
+    padding: 30px 15px;
+    background: #f4f4f4; /* Светлый серый фон для боковой панели */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    position: sticky; /* Панель будет фиксироваться */
+    top: 20px; /* Слежение за верхом страницы */
+    height: fit-content; /* Высота зависит от контента */
+}
+
+/* Карточки статьи */
+.blog-card {
+    background: #f7f7f7;
+    margin: 0 auto 50px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.blog-cover {
+    background: lightgray url('../img/004.jpg') no-repeat center;
+    background-size: cover; /* Это также помогает масштабировать изображение, чтобы оно заполнило контейнер */
+    height: 200px;
+}
+
+
+.blog-body {
+    padding: 27px;
+}
+
+.blog-title {
+    margin-bottom: 25px;
+}
+
+.blog-title h2 {
+    font-weight: 100;
+    font-size: 30px;
+    line-height: 1.3em;
+}
+
+.blog-title {
+    line-height: 1.5em;
+    color: #464646;
+}
+
+/* Теги */
+.blog-tags ul {
+    display: flex;
+    justify-content: flex-start;
+    list-style: none;
+    background: lightgray;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 25px 0;
+}
+
+.blog-tags li {
+    padding: 0 5px 0 0;
+}
+
+.blog-tags a {
+    text-decoration: none;
+    color: #464646;
+    border: 1px solid gray;
+    border-radius: 5px;
+    padding: 3px 10px;
+    font-size: 14px;
+    background: white;
+    transition: all 250ms ease;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0);
+}
+
+
+/* Подвал карточки */
+.blog-footer {
+    border-top: 1px solid lightgray;
+    padding: 12px 0;
+    display: flex;
+    justify-content: flex-end;
+    text-transform: uppercase;
+    font-size: 14px;
+    color: gray;
+}
+
+/* Поиск в боковой панели */
+.aside-search {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.search-text {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    background: #e0e0e0;
+    color: #333;
+    transition: all 0.3s ease-in-out;
+}
+
+.search-text:focus {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+/* Кнопка поиска */
+.search-do {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background: #8468ff; /* Цвет кнопки */
+    color: #fff;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.search-do:hover {
+    background: #6a52d1; /* Цвет при наведении */
+}
+
+/* Разделитель между поиском и популярными статьями */
+.search-delimiter {
+    width: 100%;
+    height: 2px;
+    background: #ffffff;
+    margin: 20px 0;
+}
+
+/* Популярные статьи */
+.aside-recent {
+    padding: 10px 0;
+    border-top: 1px solid #555;
+}
+
+.recent-item {
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #666;
+}
+
+.recent-item p {
+    font-size: 16px;
+    color: #bdbdbd;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.recent-item p:hover {
+    color: #5744ff;
+}
+
+.recent-item span {
+    font-size: 12px;
+    color: #999;
+}
+
+.recent-item:last-child {
+    border-bottom: none;
+}
+/* Теги */
+.blog-tags ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    list-style: none;
+    padding: 0;
+    margin: 25px 0;
+    background: none; /* Убираем фон */
+}
+
+.blog-tags li {
+    display: inline-block;
+}
+
+.blog-tags a {
+    text-decoration: none;
+    color: #ffffff;
+    border: 1px solid #8468ff;
+    border-radius: 25px;
+    padding: 5px 15px;
+    font-size: 14px;
+    background: #8468ff;  /* Цвет фона тегов */
+    transition: all 250ms ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.blog-tags a:hover {
+    background: #6a52d1;  /* Цвет при наведении */
+    border-color: #6a52d1;
+    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+    transform: scale(1.05);
+}
+
+.blog-tags a:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+
+/* Медиазапросы */
+@media screen and (max-width: 768px) {
+    .blog-aside {
+        padding: 15px;
+        gap: 15px;
+    }
+    
+    .aside-search,
+    .aside-recent {
+        padding: 15px;
+    }
+
+    .search-title {
+        font-size: 16px;
+    }
+
+    .recent-item p {
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .blog-article {
+        flex-direction: column;
+    }
+    .blog-container, .blog-aside {
+        padding: 20px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .blog-article {
+        flex-direction: column;
+    }
+    .blog-container, .blog-aside {
+        padding: 15px;
+    }
+}
